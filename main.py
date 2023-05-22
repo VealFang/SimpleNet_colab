@@ -22,7 +22,8 @@ _DATASETS = {
 
 @click.group(chain=True)
 @click.option("--results_path", type=str)
-@click.option("--gpu", type=int, default=[0], multiple=True, show_default=True)
+# default using CPU
+@click.option("--gpu", type=int, default=[], multiple=True, show_default=True)
 @click.option("--seed", type=int, default=0, show_default=True)
 @click.option("--log_group", type=str, default="group")
 @click.option("--log_project", type=str, default="project")
@@ -214,9 +215,9 @@ def net(
 
 
 @main.command("dataset")
-@click.argument("name", type=str)
-@click.argument("data_path", type=click.Path(exists=True, file_okay=False))
-@click.option("--subdatasets", "-d", multiple=True, type=str, required=True)
+@click.argument("--name", type=str)
+@click.argument("--data_path", type=str)
+@click.option("--subdatasets", "-s", multiple=True, type=str, required=True)
 @click.option("--train_val_split", type=float, default=1, show_default=True)
 @click.option("--batch_size", default=2, type=int, show_default=True)
 @click.option("--num_workers", default=2, type=int, show_default=True)
