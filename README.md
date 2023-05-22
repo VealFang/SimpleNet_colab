@@ -66,7 +66,7 @@ step 2. change _CLASSNAMES in `datasets/mvtec.py`
 #### Train
 
 ```
-python main.py < config.txt
+!python main.py < config.txt
 ```
 
 ## Citation
