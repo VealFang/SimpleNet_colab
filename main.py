@@ -25,9 +25,7 @@ _DATASETS = {
 # default using CPU
 @click.option("--gpu", type=int, default=[], multiple=True, show_default=True)
 @click.option("--seed", type=int, default=0, show_default=True)
-@click.option("--log_group", type=str, default="group")
 @click.option("--log_project", type=str, default="project")
-@click.option("--run_name", type=str, default="test")
 @click.option("--test", is_flag=True)
 def main(**kwargs):
     pass
@@ -39,16 +37,14 @@ def run(
     results_path,
     gpu,
     seed,
-    log_group,
     log_project,
-    run_name,
     test,
 ):
     methods = {key: item for (key, item) in methods}
 
-    run_save_path = utils.create_storage_folder(
-        results_path, log_project, log_group, run_name, mode="overwrite"
-    )
+    run_save_path = os.path.join(results_path, log_project)
+    if not os.path.exists(run_save_path):
+        os.makedirs(run_save_path)
 
     pid = os.getpid()
     list_of_dataloaders = methods["get_dataloaders"](seed)
@@ -73,7 +69,8 @@ def run(
         simplenet_list = methods["get_simplenet"](imagesize, device)
 
         models_dir = os.path.join(run_save_path, "models")
-        os.makedirs(models_dir, exist_ok=True)
+        if not os.path.exists(models_dir):
+            os.makedirs(models_dir)
         for i, SimpleNet in enumerate(simplenet_list):
             # torch.cuda.empty_cache()
             if SimpleNet.backbone.seed is not None:
@@ -83,17 +80,17 @@ def run(
             )
             # torch.cuda.empty_cache()
 
-            SimpleNet.set_model_dir(os.path.join(models_dir, f"{i}"), dataset_name)
+            SimpleNet.set_model_dir(models_dir, dataset_name)
             if not test:
-                i_auroc, p_auroc, pro_auroc = SimpleNet.train(dataloaders["training"], dataloaders["testing"])
+                p_auroc, pro_auroc = SimpleNet.train(dataloaders["training"], dataloaders["testing"])
             else:
-                i_auroc, p_auroc, pro_auroc =  SimpleNet.test(dataloaders["training"], dataloaders["testing"])
+                p_auroc, pro_auroc = SimpleNet.test(dataloaders["training"], dataloaders["testing"])
 
 
             result_collect.append(
                 {
                     "dataset_name": dataset_name,
-                    "instance_auroc": i_auroc, # auroc,
+                    # "instance_auroc": i_auroc, # auroc,
                     "full_pixel_auroc": p_auroc, # full_pixel_auroc,
                     "anomaly_pixel_auroc": pro_auroc,
                 }
@@ -215,8 +212,8 @@ def net(
 
 
 @main.command("dataset")
-@click.argument("--name", type=str)
-@click.argument("--data_path", type=str)
+@click.option("--name", type=str)
+@click.option("--data_path", type=str)
 @click.option("--subdatasets", "-s", multiple=True, type=str, required=True)
 @click.option("--train_val_split", type=float, default=1, show_default=True)
 @click.option("--batch_size", default=2, type=int, show_default=True)
