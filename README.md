@@ -8,7 +8,7 @@ Paper: [arxiv 2303.15140](https://arxiv.org/pdf/2303.15140.pdf)
 
 ##  Introduction
 
-This repo  implemented **SimpleNet** with coalb and self-built dataset.
+This repo  implemented **SimpleNet** in colab with self-built dataset.
 
 SimpleNet is a simple defect detection and localization network that built with a feature encoder, feature generator and defect discriminator. It is designed conceptionally simple without complex network deisng, training schemes or external data source.
 
