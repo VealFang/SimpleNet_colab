@@ -112,7 +112,7 @@ def compute_pro(masks, amaps, num_th=200):
         fp_pixels = np.logical_and(inverse_masks, binary_amaps).sum()
         fpr = fp_pixels / inverse_masks.sum()
 
-        df_new = pd.DataFrame({"pro": np.mean(pros), "fpr": fpr, "threshold": th})
+        df_new = pd.DataFrame({"pro": [np.mean(pros)], "fpr": [fpr], "threshold": [th]})
         df = pd.concat([df, df_new], ignore_index=True)
 
     # Normalize FPR from 0 ~ 1 to 0 ~ 0.3
