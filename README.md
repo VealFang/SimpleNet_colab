@@ -1,8 +1,5 @@
 # SimpleNet
 
-
-![](imgs/cover.png)
-
 **SimpleNet: A Simple Network for Image Anomaly Detection and Localization**
 
 *Zhikang Liu, Yiming Zhou, Yuansheng Xu, Zilei Wang**
@@ -11,7 +8,7 @@ Paper: [arxiv 2303.15140](https://arxiv.org/pdf/2303.15140.pdf)
 
 ##  Introduction
 
-This repo contains source code for **SimpleNet** implemented with pytorch.
+This repo  implemented **SimpleNet** with coalb and self-built dataset.
 
 SimpleNet is a simple defect detection and localization network that built with a feature encoder, feature generator and defect discriminator. It is designed conceptionally simple without complex network deisng, training schemes or external data source.
 
@@ -19,16 +16,12 @@ SimpleNet is a simple defect detection and localization network that built with 
 
 ### Environment 
 
-**Python3.8**
-
-**Packages**:
-- torch==1.12.1
-- torchvision==0.13.1
-- numpy==1.22.4
-- opencv-python==4.5.1
-
-(Above environment setups are not the minimum requiremetns, other versions might work too.)
-
+- python3
+- timm
+- torch
+- torchvision
+- numpy
+- opencv-python
 
 ### Data
 
@@ -40,7 +33,7 @@ Download the dataset from [here](https://www.mvtec.com/company/research/datasets
 
 The dataset folders/files follow its original structure.
 
-#### Use your own data
+#### Or use your own data
 
 step 1. keep the dataset folder structure same as MvTecAD
 
@@ -48,11 +41,15 @@ step 2. change _CLASSNAMES in `datasets/mvtec.py`
 
 ### Run
 
-#### Demo train
+#### Colab preparation
 
-Please specicy dataset_path and subdataset (-d) in `config.txt` before running.
+1. download the repository: `!git clone https://github.com/VealFang/SimpleNet_colab.git`
+2. download or upload dataset zipfile
+3. unzip dataset: `!unzip dataset.zip`
+4. change work path: `%cd SimpleNet_colab`
 
-`config.txt` gives the configuration to train models on MVTecAD dataset.
+#### Train
+
 ```
 python main.py < config.txt
 ```
