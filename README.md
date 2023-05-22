@@ -40,6 +40,11 @@ Download the dataset from [here](https://www.mvtec.com/company/research/datasets
 
 The dataset folders/files follow its original structure.
 
+#### Use your own data
+
+step 1. keep the dataset folder structure same as MvTecAD
+step 2. change `_CLASSNAMES` in `datasets/mvtec.py`
+
 ### Run
 
 #### Demo train
