@@ -44,11 +44,11 @@ The dataset folders/files follow its original structure.
 
 #### Demo train
 
-Please specicy dataset path (line1) and log folder (line10) in `run.sh` before running.
+Please specicy dataset_path and subdataset (-d) in `config.txt` before running.
 
-`run.sh` gives the configuration to train models on MVTecAD dataset.
+`config.txt` gives the configuration to train models on MVTecAD dataset.
 ```
-bash run.sh
+python main.py < config.txt
 ```
 
 ## Citation
