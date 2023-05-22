@@ -32,7 +32,7 @@ SimpleNet is a simple defect detection and localization network that built with 
 
 ### Data
 
-Edit `run.sh` to edit dataset class and dataset path.
+Edit `config.txt` to edit dataset class and dataset path.
 
 #### MvTecAD
 
