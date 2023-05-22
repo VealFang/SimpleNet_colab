@@ -1,9 +1,7 @@
 --seed 0
 --gpu 0
---log_group simplenet_mvtec
---log_project MVTecAD_Results
+--log_project real_dataset
 --results_path results
---run_name run
 net
 -b wideresnet50
 -le layer2
@@ -24,5 +22,5 @@ dataset
 --resize 329
 --imagesize 288
 --name 'mvtec'
---data_path 'G:/Datasets/real_dataset'
+--data_path '/content/real_dataset'
 -s '1'
