@@ -6,21 +6,11 @@ import torch
 from torchvision import transforms
 
 _CLASSNAMES = [
-    "bottle",
-    "cable",
-    "capsule",
-    "carpet",
-    "grid",
-    "hazelnut",
-    "leather",
-    "metal_nut",
-    "pill",
-    "screw",
-    "tile",
-    "toothbrush",
-    "transistor",
-    "wood",
-    "zipper",
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
 ]
 
 IMAGENET_MEAN = [0.485, 0.456, 0.406]
