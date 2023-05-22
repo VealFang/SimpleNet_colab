@@ -25,4 +25,4 @@ dataset
 --imagesize 288
 --name 'mvtec'
 --data_path 'G:/Datasets/real_dataset'
--d '1'
+-s '1'
