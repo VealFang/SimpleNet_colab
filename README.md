@@ -43,7 +43,8 @@ The dataset folders/files follow its original structure.
 #### Use your own data
 
 step 1. keep the dataset folder structure same as MvTecAD
-step 2. change `_CLASSNAMES` in `datasets/mvtec.py`
+
+step 2. change _CLASSNAMES in `datasets/mvtec.py`
 
 ### Run
 
