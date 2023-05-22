@@ -43,10 +43,19 @@ step 2. change _CLASSNAMES in `datasets/mvtec.py`
 
 #### Colab preparation
 
-1. download the repository: `!git clone https://github.com/VealFang/SimpleNet_colab.git`
+1. download the repository: 
+
+```!git clone https://github.com/VealFang/SimpleNet_colab.git```
+
 2. download or upload dataset zipfile
-3. unzip dataset: `!unzip dataset.zip`
-4. change work path: `%cd SimpleNet_colab`
+
+3. unzip dataset: 
+
+```!unzip dataset.zip```
+
+6. change work path: 
+
+```%cd SimpleNet_colab```
 
 #### Train
 
