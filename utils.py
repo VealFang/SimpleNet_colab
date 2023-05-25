@@ -28,8 +28,6 @@ def plot_fig(test_img, scores, gts_list, masks, save_dir, class_name):
     # for data in test_data:
     #     img_paths.extend(data['image'])
     num = len(scores)
-    print('scores: ', scores)
-    print(num)
     vmax = scores.max() * 255.
     vmin = scores.min() * 255.
     for i in range(num):
