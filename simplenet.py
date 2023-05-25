@@ -314,14 +314,6 @@ class SimpleNet(torch.nn.Module):
         segmentations = (segmentations - min_scores) / (max_scores - min_scores)
         segmentations = np.mean(segmentations, axis=0)
         
-        # ------------new added--------------
-        img_paths = []
-        test_img = []
-        for data in test_data:
-            img_paths.extend(data['image_path'])
-            test_img.extend(data['image'].numpy())
-        utils.plot_fig(test_img, norm_segmentations, masks_gt, norm_segmentations, self.plots_dir, self.dataset_name)
-
         anomaly_labels = [
             x[1] != "good" for x in test_data.dataset.data_to_iterate
         ]
@@ -366,6 +358,14 @@ class SimpleNet(torch.nn.Module):
             for min_score, max_score in zip(min_scores, max_scores):
                 norm_segmentations += (segmentations - min_score) / max(max_score - min_score, 1e-2)
             norm_segmentations = norm_segmentations / len(scores)
+            
+            # ------------new added--------------
+            img_paths = []
+            test_img = []
+            for data in test_data:
+                img_paths.extend(data['image_path'])
+                test_img.extend(data['image'].numpy())
+            utils.plot_fig(test_img, norm_segmentations, masks_gt, norm_segmentations, self.plots_dir, self.dataset_name)
 
 
             # Compute PRO score & PW Auroc for all images
