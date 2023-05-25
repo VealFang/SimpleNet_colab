@@ -194,14 +194,14 @@ class SimpleNet(torch.nn.Module):
         self.tau = 1
         self.logger = None
 
-    def set_model_dir(self, model_dir, dataset_name):
+    def set_model_dir(self, model_dir, plots_dir, dataset_name):
 
         self.model_dir = model_dir 
-        # os.makedirs(self.model_dir, exist_ok=True)
+        os.makedirs(self.model_dir, exist_ok=True)
+        self.plots_dir = plots_dir
+        os.makedirs(self.plots_dir, exist_ok=True)
         self.ckpt_dir = os.path.join(self.model_dir, dataset_name)
         os.makedirs(self.ckpt_dir, exist_ok=True)
-        # self.tb_dir = os.path.join(self.ckpt_dir, "tb")
-        # os.makedirs(self.tb_dir, exist_ok=True)
         self.logger = TBWrapper(self.ckpt_dir) #SummaryWriter(log_dir=tb_dir)
     
 
@@ -313,6 +313,14 @@ class SimpleNet(torch.nn.Module):
         )
         segmentations = (segmentations - min_scores) / (max_scores - min_scores)
         segmentations = np.mean(segmentations, axis=0)
+        
+        # ------------new added--------------
+        img_paths = []
+        test_img = []
+        for data in test_data:
+            img_paths.extend(data['image_path'])
+            test_img.extend(data['image'].numpy())
+        utils.plot_fig(test_img, norm_segmentations, masks_gt, norm_segmentations, self.plots_dir, self.dataset_name)
 
         anomaly_labels = [
             x[1] != "good" for x in test_data.dataset.data_to_iterate
