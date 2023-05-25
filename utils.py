@@ -40,7 +40,7 @@ def plot_fig(test_img, scores, gts_list, masks, save_dir, class_name):
         mask = masks[i]
         mask *= 255
         # vis_img = mark_boundaries(img, mask, color=(1, 0, 0), mode='thick')
-        fig_img, ax_img = plt.subplots(1, 4, figsize=(12, 3))
+        fig_img, ax_img = plt.subplots(1, 4, figsize=(12, 5))
         fig_img.subplots_adjust(right=0.9)
         norm = matplotlib.colors.Normalize(vmin=vmin, vmax=vmax)
         for ax_i in ax_img:
@@ -54,8 +54,8 @@ def plot_fig(test_img, scores, gts_list, masks, save_dir, class_name):
         ax_img[2].imshow(img, cmap='gray', interpolation='none')
         ax_img[2].imshow(heat_map, cmap='jet', alpha=0.5, interpolation='none')
         ax_img[2].title.set_text('Predicted heat map')
-        ax_img[3].imshow(mask, cmap='gray')
-        ax_img[3].title.set_text('Predicted mask')
+        # ax_img[3].imshow(mask, cmap='gray')
+        # ax_img[3].title.set_text('Predicted mask')
         # ax_img[4].imshow(vis_img)
         # ax_img[4].title.set_text('Segmentation result')
         left = 0.92
