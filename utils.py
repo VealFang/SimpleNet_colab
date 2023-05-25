@@ -4,6 +4,7 @@ import os
 import random
 
 import matplotlib.pyplot as plt
+import matplotlib
 import numpy as np
 import PIL
 import torch
