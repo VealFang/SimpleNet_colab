@@ -41,7 +41,7 @@ def plot_fig(test_img, scores, gts_list, masks, save_dir, class_name):
         mask = masks[i]
         mask *= 255
         # vis_img = mark_boundaries(img, mask, color=(1, 0, 0), mode='thick')
-        fig_img, ax_img = plt.subplots(1, 4, figsize=(12, 5))
+        fig_img, ax_img = plt.subplots(1, 3, figsize=(12, 5))
         fig_img.subplots_adjust(right=0.9)
         norm = matplotlib.colors.Normalize(vmin=vmin, vmax=vmax)
         for ax_i in ax_img:
