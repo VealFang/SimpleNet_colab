@@ -69,8 +69,8 @@ def run(
         simplenet_list = methods["get_simplenet"](imagesize, device)
 
         models_dir = os.path.join(run_save_path, "models")
-        if not os.path.exists(models_dir):
-            os.makedirs(models_dir)
+        plots_dir = os.path.join(run_save_path, "plots")
+
         for i, SimpleNet in enumerate(simplenet_list):
             # torch.cuda.empty_cache()
             if SimpleNet.backbone.seed is not None:
@@ -80,7 +80,7 @@ def run(
             )
             # torch.cuda.empty_cache()
 
-            SimpleNet.set_model_dir(models_dir, dataset_name)
+            SimpleNet.set_model_dir(models_dir, plots_dir, dataset_name)
             if not test:
                 p_auroc, pro_auroc = SimpleNet.train(dataloaders["training"], dataloaders["testing"])
             else:
