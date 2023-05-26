@@ -21,7 +21,7 @@ def denormalization(x):
     return x
 
 
-def plot_fig(test_img, scores, gts_list, masks, save_dir, clas_name):
+def plot_fig(test_img, scores, gts_list, masks, save_dir, class_name):
     # plot_fig(test_data, scores, masks_gt, norm_segmentations, self.plots_dir, self.dataset_name)
     # img_paths, scores, masks_gt, masks, self.plots_dir, self.dataset_name
     # img_paths = []
