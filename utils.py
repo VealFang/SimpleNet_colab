@@ -21,7 +21,7 @@ def denormalization(x):
     return x
 
 
-def plot_fig(test_img, scores, gts_list, masks, save_dir, class_name):
+def plot_fig(test_img, scores, gts_list, masks, save_dir, img_paths):
     # plot_fig(test_data, scores, masks_gt, norm_segmentations, self.plots_dir, self.dataset_name)
     # img_paths, scores, masks_gt, masks, self.plots_dir, self.dataset_name
     # img_paths = []
@@ -33,6 +33,7 @@ def plot_fig(test_img, scores, gts_list, masks, save_dir, class_name):
     for i in range(num):
         img = test_img[i]
         img = denormalization(img)
+        class_name = img_paths[i].split('/')[-3]
         gts = np.asarray(gts_list)
         gt = gts[i].transpose(1, 2, 0).squeeze()
         heat_map = scores[i] * 255
