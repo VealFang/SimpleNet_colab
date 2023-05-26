@@ -367,7 +367,8 @@ class SimpleNet(torch.nn.Module):
             for data in test_data:
                 img_paths.extend(data['image_path'])
                 test_img.extend(data['image'].numpy())
-            utils.plot_fig(test_img, norm_segmentations, masks_gt, norm_segmentations, self.plots_dir, img_paths)
+            class_name = img_paths[0].split('\\')[-4]
+            utils.plot_fig(test_img, norm_segmentations, masks_gt, norm_segmentations, self.plots_dir, class_name)
 
 
             # Compute PRO score & PW Auroc for all images
