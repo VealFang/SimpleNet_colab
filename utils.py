@@ -33,7 +33,7 @@ def plot_fig(test_img, scores, gts_list, masks, save_dir, img_paths):
     for i in range(num):
         img = test_img[i]
         img = denormalization(img)
-        class_name = img_paths[i].split('/')[-3]
+        class_name = img_paths[i].split('\\')[-4]
         gts = np.asarray(gts_list)
         gt = gts[i].transpose(1, 2, 0).squeeze()
         heat_map = scores[i] * 255
